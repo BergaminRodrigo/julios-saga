@@ -12,11 +12,10 @@ export class Pub extends Phaser.Scene {
   create() {
     this.cameras.main.fadeIn(280, 0, 0, 0);
 
-    // background fills height; world is as wide as the scaled image
     const bg = this.add.image(0, 0, 'pub_interior').setOrigin(0, 0);
-    const sc = H / bg.height;
+    const sc = bg.height > 0 ? H / bg.height : 1;
     bg.setScale(sc);
-    const worldW = bg.width * sc;
+    const worldW = bg.width > 0 ? bg.width * sc : W;
     this.physics.world.setBounds(0, 0, worldW, H);
     this.cameras.main.setBounds(0, 0, worldW, H);
 
@@ -80,7 +79,11 @@ export class Pub extends Phaser.Scene {
   }
 
   _playPubMusic() {
-    this._pubMusic = this.sound.add('music_pub', { loop: true, volume: 0.6 });
-    this._pubMusic.play();
+    try {
+      this._pubMusic = this.sound.add('music_pub', { loop: true, volume: 0.6 });
+      this._pubMusic.play();
+    } catch (e) {
+      console.error('music_pub failed:', e);
+    }
   }
 }

@@ -73,13 +73,17 @@ export class Intro extends Phaser.Scene {
       .setOrigin(0.5).setScrollFactor(0);
     this.tweens.add({ targets:prompt, alpha:0.3, duration:600, yoyo:true, repeat:-1 });
 
-    // auto-advance after 5s
-    this.time.delayedCall(5000, () => this._next());
+    // tap/click or auto-advance after 5s
+    this.input.once('pointerdown', () => this._next());
+    this.input.keyboard?.once('keydown', () => this._next());
+    this._slideTimer = this.time.delayedCall(5000, () => this._next());
   }
 
   _next() {
+    if (this._done) return;
     this._idx++;
     if (this._idx >= SLIDES.length) {
+      this._done = true;
       // all slides done, go to Pub
       this.cameras.main.fadeOut(220, 0, 0, 0);
       this.cameras.main.once('camerafadeoutcomplete', () => this.scene.start('Pub'));
