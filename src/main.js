@@ -47,3 +47,16 @@ game.canvas.addEventListener('webglcontextrestored', () => {
 function refreshScale() { game.scale.refresh(); }
 window.addEventListener('orientationchange', () => setTimeout(refreshScale, 100));
 window.addEventListener('resize', refreshScale);
+
+// On mobile, go fullscreen on the first tap (removes the browser URL bar so
+// the 16:9 canvas uses the whole screen height). Needs a user gesture.
+if (isMobile) {
+  const goFs = () => {
+    const el = document.documentElement;
+    const req = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (req && !document.fullscreenElement) req.call(el).catch(() => {});
+    setTimeout(refreshScale, 150);
+    window.removeEventListener('pointerdown', goFs);
+  };
+  window.addEventListener('pointerdown', goFs);
+}
