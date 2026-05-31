@@ -6,8 +6,10 @@ import { Intro } from './scenes/Intro.js';
 import { Pub }   from './scenes/Pub.js';
 import { Game }  from './scenes/Game.js';
 
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
 const config = {
-  type: Phaser.AUTO,
+  type: isMobile ? Phaser.CANVAS : Phaser.AUTO,
   parent: 'game',
   width: W, height: H,
   backgroundColor: PAL.bg,
