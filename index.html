@@ -27,11 +27,28 @@
   <div id="boot"><div class="t">Julio's&nbsp;Saga</div><div class="s" id="bootmsg">carregando…</div></div>
   <div id="game"></div>
   <script>
-    // surface any boot error in the splash so we never silently hang on "carregando"
-    window.addEventListener('error', e => {
-      var m = document.getElementById('bootmsg');
-      if (m) m.innerHTML = 'erro: ' + (e.message || e.type) +
-        '<br><span style="color:#8a7458">' + (e.filename || '').split('/').pop() + '</span>';
+    // Persistent on-screen error overlay — survives boot splash removal so a
+    // crash AFTER load (e.g. black screen) is still visible on mobile.
+    function showErr(title, detail) {
+      var o = document.getElementById('errbox');
+      if (!o) {
+        o = document.createElement('div');
+        o.id = 'errbox';
+        o.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#1a0d0d;' +
+          'color:#ffb4a0;font-family:monospace;font-size:12px;padding:16px;' +
+          'overflow:auto;white-space:pre-wrap;line-height:1.5';
+        document.body.appendChild(o);
+      }
+      o.textContent = '⚠ ' + title + '\n\n' + (detail || '');
+    }
+    window.addEventListener('error', function (e) {
+      showErr(e.message || e.type,
+        (e.filename || '').split('/').pop() + ':' + e.lineno + ':' + e.colno +
+        '\n\n' + (e.error && e.error.stack ? e.error.stack : ''));
+    });
+    window.addEventListener('unhandledrejection', function (e) {
+      var r = e.reason;
+      showErr('Promise rejeitada', (r && r.stack) ? r.stack : String(r));
     });
   </script>
   <script src="public/vendor/phaser.min.js"
