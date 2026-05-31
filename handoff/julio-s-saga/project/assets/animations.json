@@ -1,0 +1,20 @@
+{
+  "_comment": "Animation map for julio-spritesheet.png. NOTE: the source is a labeled concept layout, not a uniform grid — frames vary in size and sit on a near-black (#0d0d0d) background. Slice each row's frames manually or key out the background, then this map describes intended playback. 'row' is top-to-bottom; 'side' indicates the left/right half of that band where the labeled cluster sits.",
+  "image": "characters/julio/julio-spritesheet.png",
+  "imageSize": { "width": 1254, "height": 1254 },
+  "background": "#0d0d0d",
+  "facing": "right",
+  "animations": {
+    "idle":           { "row": 1, "side": "left",   "frames": 4, "fps": 6,  "loop": true },
+    "walk":           { "row": 1, "side": "right",  "frames": 6, "fps": 10, "loop": true },
+    "run":            { "row": 2, "side": "left",   "frames": 5, "fps": 12, "loop": true },
+    "jump":           { "row": 2, "side": "right",  "frames": 4, "fps": 10, "loop": false },
+    "attack":         { "row": 3, "side": "left",   "frames": 6, "fps": 14, "loop": false },
+    "attack_charged": { "row": 3, "side": "right",  "frames": 3, "fps": 8,  "loop": false },
+    "block":          { "row": 4, "side": "left",   "frames": 4, "fps": 8,  "loop": false },
+    "hurt":           { "row": 4, "side": "right",  "frames": 4, "fps": 10, "loop": false },
+    "crouch":         { "row": 5, "side": "left",   "frames": 3, "fps": 8,  "loop": false },
+    "climb":          { "row": 5, "side": "center", "frames": 3, "fps": 8,  "loop": true },
+    "fall":           { "row": 5, "side": "right",  "frames": 3, "fps": 8,  "loop": false }
+  }
+}

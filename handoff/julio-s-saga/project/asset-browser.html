@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julio's Saga — Asset Pack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#15110c;
+    --panel:#1f1812;
+    --panel-2:#271e16;
+    --line:#3a2c1f;
+    --ink:#efe3d2;
+    --muted:#b39b80;
+    --faint:#8a7458;
+    --ember:#e08a3c;
+    --ember-2:#f0b35a;
+    --leaf:#9bb24a;
+    --blood:#9c3b34;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:14px;
+    line-height:1.65;
+    background-image:radial-gradient(1200px 500px at 50% -10%, rgba(224,138,60,.10), transparent 60%);
+  }
+  img{image-rendering:pixelated;display:block}
+  a{color:var(--ember-2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px 120px}
+
+  /* ---- header ---- */
+  header{
+    padding:72px 28px 40px;text-align:center;border-bottom:1px solid var(--line);
+    max-width:1180px;margin:0 auto 0;
+  }
+  .kicker{font-family:"Pixelify Sans";letter-spacing:.28em;color:var(--ember);font-size:13px;text-transform:uppercase}
+  h1{font-family:"Pixelify Sans";font-weight:700;font-size:clamp(40px,8vw,82px);line-height:.95;margin:10px 0 14px;
+     color:var(--ink);text-shadow:0 3px 0 rgba(0,0,0,.4)}
+  .sub{color:var(--muted);max-width:560px;margin:0 auto;font-size:14px}
+
+  /* ---- nav ---- */
+  nav{position:sticky;top:0;z-index:20;background:rgba(21,17,12,.92);backdrop-filter:blur(6px);
+      border-bottom:1px solid var(--line)}
+  nav .inner{max-width:1180px;margin:0 auto;display:flex;gap:6px;flex-wrap:wrap;padding:10px 24px}
+  nav a{font-family:"Pixelify Sans";font-size:14px;color:var(--muted);padding:6px 12px;border-radius:4px}
+  nav a:hover{color:var(--ink);background:var(--panel-2);text-decoration:none}
+
+  section{padding-top:64px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .sec-head .no{font-family:"Pixelify Sans";color:var(--ember);font-size:18px}
+  h2{font-family:"Pixelify Sans";font-weight:600;font-size:30px;color:var(--ink)}
+  .sec-note{color:var(--muted);margin-bottom:26px;max-width:720px}
+
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .panel .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:11px 16px;background:var(--panel-2);border-bottom:1px solid var(--line);
+    font-size:12px;color:var(--muted)}
+  .path{font-weight:600;color:var(--ember-2)}
+  .dim{color:var(--faint)}
+  .imgpad{padding:18px;background:
+     repeating-linear-gradient(45deg,#1a140e 0 12px,#181209 12px 24px)}
+  .imgpad img{width:100%;height:auto;border-radius:4px;border:1px solid #00000055}
+
+  .grid{display:grid;gap:22px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g-port{grid-template-columns:1fr 1.35fr}
+  @media(max-width:820px){.g2,.g-port{grid-template-columns:1fr}}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:9px 14px;border-bottom:1px solid var(--line)}
+  th{font-family:"Pixelify Sans";font-weight:600;color:var(--ember);font-size:13px;letter-spacing:.04em}
+  tbody tr:last-child td{border-bottom:none}
+  td:first-child{color:var(--ink);font-weight:500}
+  .fr{color:var(--ember-2);font-variant-numeric:tabular-nums}
+  td.note{color:var(--muted)}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+  .card h3{font-family:"Pixelify Sans";font-size:19px;margin-bottom:14px;color:var(--ink)}
+  .stat-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .chip{font-size:12px;background:var(--panel-2);border:1px solid var(--line);border-radius:5px;
+    padding:5px 10px;color:var(--muted)}
+  .chip b{color:var(--ember-2);font-weight:600}
+  .skill{padding:10px 0;border-bottom:1px solid var(--line)}
+  .skill:last-child{border-bottom:none}
+  .skill b{color:var(--ink)}
+  .skill span{color:var(--muted)}
+
+  .phase-tag{display:inline-block;font-family:"Pixelify Sans";font-size:12px;color:var(--leaf);
+    border:1px solid #4a5a24;background:#22270f;border-radius:5px;padding:3px 9px;margin-bottom:8px}
+  ul.atk{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  ul.atk li{font-size:12px;background:#22270f;border:1px solid #3c481c;color:#c7d18a;border-radius:5px;padding:5px 10px}
+
+  /* file tree */
+  pre.tree{background:#0f0c08;border:1px solid var(--line);border-radius:10px;padding:20px 22px;
+    font-size:12.5px;color:var(--muted);overflow:auto;line-height:1.75}
+  pre.tree .d{color:var(--ember-2)}
+  pre.tree .c{color:var(--faint)}
+
+  .callout{border-left:3px solid var(--ember);background:var(--panel);padding:12px 16px;border-radius:0 8px 8px 0;
+    color:var(--muted);font-size:13px;margin-top:18px}
+  .callout b{color:var(--ember-2)}
+  footer{text-align:center;color:var(--faint);font-size:12px;padding:50px 0 0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">Asset Pack · Handoff for Claude Code</div>
+  <h1>Julio's&nbsp;Saga</h1>
+  <p class="sub">A simple 2D browser game. Jarl Júlio — Viking gastropub chef — battles
+  food-themed bosses. Everything you need to start building, organized below.</p>
+</header>
+
+<nav><div class="inner">
+  <a href="#structure">Structure</a>
+  <a href="#player">Player</a>
+  <a href="#anim">Animations</a>
+  <a href="#stats">Stats</a>
+  <a href="#boss">Boss 01</a>
+  <a href="#bg">Backgrounds</a>
+</div></nav>
+
+<div class="wrap">
+
+  <!-- STRUCTURE -->
+  <section id="structure">
+    <div class="sec-head"><span class="no">00</span><h2>Folder structure</h2></div>
+    <p class="sec-note">Open this folder in Claude Code, read <b>README.md</b> first, then build the game
+    against these assets. Low-res previews and a distorted duplicate live in <code>reference/</code> — not for shipping.</p>
+    <pre class="tree">.
+├── <span class="d">README.md</span>                     <span class="c">← read first (full spec)</span>
+├── <span class="d">asset-browser.html</span>            <span class="c">← this page</span>
+└── <span class="d">assets/</span>
+    ├── animations.json          <span class="c">player animation map</span>
+    ├── <span class="d">characters/julio/</span>
+    │   ├── julio-spritesheet.png      <span class="c">1254×1254 · all player anims</span>
+    │   ├── julio-portrait.png         <span class="c">1024×1536 · hero render</span>
+    │   └── julio-character-card.png   <span class="c">1254×1254 · stat reference</span>
+    ├── <span class="d">bosses/abacate-anciao/</span>
+    │   └── abacate-anciao-sheet.png   <span class="c">1313×1198 · boss + 3 phases</span>
+    └── <span class="d">backgrounds/</span>
+        ├── pub-jarl-julio.png    <span class="c">1536×1024 · full original</span>
+        ├── pub-exterior.png      <span class="c">1536×589 · storefront / hub</span>
+        └── pub-interior.png      <span class="c">1536×435 · bar / shop scene</span></pre>
+  </section>
+
+  <!-- PLAYER -->
+  <section id="player">
+    <div class="sec-head"><span class="no">01</span><h2>Player — Júlio</h2></div>
+    <p class="sec-note">The full spritesheet, hero render and stat card. The sheet is a <b>labeled concept layout</b>,
+    not a uniform grid — slice each row into frames (or key out the near-black background) before use.</p>
+
+    <div class="panel">
+      <div class="bar"><span class="path">assets/characters/julio/julio-spritesheet.png</span><span class="dim">1254 × 1254 · 11 states</span></div>
+      <div class="imgpad"><img src="assets/characters/julio/julio-spritesheet.png" alt="Júlio spritesheet"></div>
+    </div>
+
+    <div class="grid g-port" style="margin-top:22px">
+      <div class="panel">
+        <div class="bar"><span class="path">…/julio-portrait.png</span><span class="dim">1024 × 1536</span></div>
+        <div class="imgpad"><img src="assets/characters/julio/julio-portrait.png" alt="Júlio portrait"></div>
+      </div>
+      <div class="panel">
+        <div class="bar"><span class="path">…/julio-character-card.png</span><span class="dim">1254 × 1254 · reference</span></div>
+        <div class="imgpad"><img src="assets/characters/julio/julio-character-card.png" alt="Júlio character card"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANIMATIONS -->
+  <section id="anim">
+    <div class="sec-head"><span class="no">02</span><h2>Animation map</h2></div>
+    <p class="sec-note">Eleven states laid out top→bottom across the sheet. Mirrored in
+    <code>assets/animations.json</code> for the player state machine.</p>
+    <div class="panel">
+      <table>
+        <thead><tr><th>State</th><th>Key</th><th>Frames</th><th>Loop</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Idle</td><td class="fr">idle</td><td class="fr">4</td><td class="note">yes</td><td class="note">Standing, spatula in hand</td></tr>
+          <tr><td>Walk</td><td class="fr">walk</td><td class="fr">6</td><td class="note">yes</td><td class="note">Cape flowing</td></tr>
+          <tr><td>Run</td><td class="fr">run</td><td class="fr">5</td><td class="note">yes</td><td class="note">Leaning forward</td></tr>
+          <tr><td>Jump</td><td class="fr">jump</td><td class="fr">4</td><td class="note">no</td><td class="note">Crouch → launch → apex → descend</td></tr>
+          <tr><td>Attack</td><td class="fr">attack</td><td class="fr">6</td><td class="note">no</td><td class="note">Spatula swing reads as a sweeping arc</td></tr>
+          <tr><td>Charged attack</td><td class="fr">attack_charged</td><td class="fr">3</td><td class="note">no</td><td class="note">Wind-up → ground slam + spark FX</td></tr>
+          <tr><td>Block</td><td class="fr">block</td><td class="fr">4</td><td class="note">no</td><td class="note">Guard stance, ends with shield spark</td></tr>
+          <tr><td>Hurt</td><td class="fr">hurt</td><td class="fr">4</td><td class="note">no</td><td class="note">Knockback + red impact</td></tr>
+          <tr><td>Crouch</td><td class="fr">crouch</td><td class="fr">3</td><td class="note">no</td><td class="note">Ducking</td></tr>
+          <tr><td>Climb</td><td class="fr">climb</td><td class="fr">3</td><td class="note">yes</td><td class="note">On a ladder</td></tr>
+          <tr><td>Fall</td><td class="fr">fall</td><td class="fr">3</td><td class="note">no</td><td class="note">Airborne → hard landing + dust</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>First build task:</b> slice the spritesheet rows into per-frame transparent PNGs
+    (or a uniform atlas) — every gameplay system depends on this step.</div>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats">
+    <div class="sec-head"><span class="no">03</span><h2>Stats &amp; skills</h2></div>
+    <p class="sec-note">Transcribed from the character card — tune the numbers to your balance.</p>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Júlio · Chef da Tribo</h3>
+        <div class="stat-row">
+          <span class="chip"><b>Class</b> Chef Viking</span>
+          <span class="chip"><b>Lvl</b> 15</span>
+          <span class="chip"><b>HP</b> 145</span>
+          <span class="chip"><b>MP</b> 60</span>
+        </div>
+        <div class="stat-row">
+          <span class="chip">STR <b>16</b></span>
+          <span class="chip">DEX <b>14</b></span>
+          <span class="chip">CON <b>15</b></span>
+          <span class="chip">INT <b>10</b></span>
+          <span class="chip">WIS <b>12</b></span>
+          <span class="chip">CHA <b>13</b></span>
+        </div>
+        <div style="color:var(--muted);font-size:12.5px">
+          <b style="color:var(--ember-2)">Gear&nbsp;·</b> Iron Spatula · Bearskin Cape · Runic Chef Coat · Legendary Burger · Ember Amulet
+        </div>
+      </div>
+      <div class="card">
+        <h3>Skills</h3>
+        <div class="skill"><b>Brasa Sagrada</b> — <span>AoE fire damage + burn over time</span></div>
+        <div class="skill"><b>Burger Supremo</b> — <span>heals the whole party</span></div>
+        <div class="skill"><b>Grito do Chef</b> — <span>buffs team attack</span></div>
+        <div class="skill"><b>Fumaça Tática</b> — <span>lowers enemy accuracy</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOSS -->
+  <section id="boss">
+    <div class="sec-head"><span class="no">04</span><h2>Boss 01 — Abacate Ancião</h2></div>
+    <p class="sec-note"><i>"Discípulo do Bruxo Kale."</i> A druidic avocado titan who rules the Dark Vegan
+    Forest and wants meat erased from the nine realms. Three escalating phases + two minion types.</p>
+
+    <div class="panel">
+      <div class="bar"><span class="path">assets/bosses/abacate-anciao/abacate-anciao-sheet.png</span><span class="dim">1313 × 1198</span></div>
+      <div class="imgpad"><img src="assets/bosses/abacate-anciao/abacate-anciao-sheet.png" alt="Abacate Ancião boss sheet"></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:22px">
+      <div class="card">
+        <h3>Phases</h3>
+        <div style="margin-bottom:14px"><span class="phase-tag">FASE 1 · "A Natureza Irá Vencer"</span><br><span style="color:var(--muted);font-size:12.5px">Base form. Throws pits.</span></div>
+        <div style="margin-bottom:14px"><span class="phase-tag">FASE 2 · "O Núcleo Despertou"</span><br><span style="color:var(--muted);font-size:12.5px">Core glows, drips guacamole, stronger.</span></div>
+        <div><span class="phase-tag">FASE 3 · "A Floresta É Minha!"</span><br><span style="color:var(--muted);font-size:12.5px">Overgrown root-titan, full power.</span></div>
+      </div>
+      <div class="card">
+        <h3>Attacks</h3>
+        <ul class="atk">
+          <li>Pit Throw</li><li>Binding Roots</li><li>Guacamole Explosion</li>
+          <li>Chasing Vines</li><li>Leaf Storm</li><li>Summon Allies</li>
+        </ul>
+        <h3 style="margin-top:20px">Minions</h3>
+        <ul class="atk"><li>🥕 Spear Carrot</li><li>🥦 Shield Broccoli</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACKGROUNDS -->
+  <section id="bg">
+    <div class="sec-head"><span class="no">05</span><h2>Backgrounds — Jarl Júlio Pub</h2></div>
+    <p class="sec-note">The original was one image of two stacked scenes; split into a reusable
+    exterior and interior. Menu lore: Burgers (Supremo/Viking/Berserker/Veggie),
+    Beers (Pilsen/IPA/Stout/Red Ale), Mead (Tradicional/Frutas/Especiado). Taps: Thor, Freya, Vidar, Ulir.</p>
+
+    <div class="panel">
+      <div class="bar"><span class="path">assets/backgrounds/pub-exterior.png</span><span class="dim">1536 × 589 · hub / level-select facade</span></div>
+      <div class="imgpad"><img src="assets/backgrounds/pub-exterior.png" alt="Pub exterior"></div>
+    </div>
+    <div class="panel" style="margin-top:22px">
+      <div class="bar"><span class="path">assets/backgrounds/pub-interior.png</span><span class="dim">1536 × 435 · shop / dialogue / safe room</span></div>
+      <div class="imgpad"><img src="assets/backgrounds/pub-interior.png" alt="Pub interior"></div>
+    </div>
+  </section>
+
+  <footer>Julio's Saga — asset pack · organized for Claude Code</footer>
+</div>
+</body>
+</html>

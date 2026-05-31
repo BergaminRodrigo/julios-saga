@@ -1,0 +1,11 @@
+{
+  "name": "julios-saga",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Julio's Saga — 2D browser platformer (Phaser 3). Viking chef vs food bosses.",
+  "scripts": {
+    "start": "python -m http.server 8080",
+    "serve": "python -m http.server 8080"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "idle": {
+    "file": "idle.png",
+    "frameWidth": 144,
+    "frameHeight": 250,
+    "frames": 1,
+    "fps": 6,
+    "loop": true,
+    "source": "frames"
+  },
+  "walk": {
+    "file": "walk.png",
+    "frameWidth": 142,
+    "frameHeight": 158,
+    "frames": 6,
+    "fps": 10,
+    "loop": true
+  },
+  "run": {
+    "file": "run.png",
+    "frameWidth": 228,
+    "frameHeight": 262,
+    "frames": 5,
+    "fps": 12,
+    "loop": true,
+    "source": "frames"
+  },
+  "jump": {
+    "file": "jump.png",
+    "frameWidth": 215,
+    "frameHeight": 251,
+    "frames": 4,
+    "fps": 10,
+    "loop": false,
+    "source": "frames"
+  },
+  "attack": {
+    "file": "attack.png",
+    "frameWidth": 254,
+    "frameHeight": 262,
+    "frames": 4,
+    "fps": 14,
+    "loop": false,
+    "source": "frames"
+  },
+  "attack_charged": {
+    "file": "attack_charged.png",
+    "frameWidth": 209,
+    "frameHeight": 172,
+    "frames": 3,
+    "fps": 8,
+    "loop": false
+  },
+  "block": {
+    "file": "block.png",
+    "frameWidth": 204,
+    "frameHeight": 141,
+    "frames": 4,
+    "fps": 8,
+    "loop": false
+  },
+  "hurt": {
+    "file": "hurt.png",
+    "frameWidth": 199,
+    "frameHeight": 141,
+    "frames": 4,
+    "fps": 10,
+    "loop": false
+  },
+  "crouch": {
+    "file": "crouch.png",
+    "frameWidth": 184,
+    "frameHeight": 153,
+    "frames": 2,
+    "fps": 8,
+    "loop": false,
+    "source": "frames"
+  },
+  "climb": {
+    "file": "climb.png",
+    "frameWidth": 159,
+    "frameHeight": 195,
+    "frames": 3,
+    "fps": 8,
+    "loop": true
+  },
+  "fall": {
+    "file": "fall.png",
+    "frameWidth": 206,
+    "frameHeight": 195,
+    "frames": 3,
+    "fps": 8,
+    "loop": false
+  }
+}

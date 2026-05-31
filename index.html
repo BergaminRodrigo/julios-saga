@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#15110c">
+<title>Julio's Saga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#15110c; --ember:#e08a3c; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);
+    -webkit-tap-highlight-color:transparent;touch-action:none;overscroll-behavior:none}
+  #game{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+  canvas{image-rendering:pixelated;image-rendering:crisp-edges}
+  /* boot splash before Phaser paints */
+  #boot{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;color:#efe3d2;font-family:"Pixelify Sans",system-ui,sans-serif;gap:14px;z-index:5}
+  #boot .t{font-size:clamp(28px,7vw,54px);color:#f0b35a;text-shadow:0 3px 0 rgba(0,0,0,.5)}
+  #boot .s{font-family:"JetBrains Mono",monospace;color:#b39b80;font-size:13px;letter-spacing:.2em}
+</style>
+</head>
+<body>
+  <div id="boot"><div class="t">Julio's&nbsp;Saga</div><div class="s" id="bootmsg">carregando…</div></div>
+  <div id="game"></div>
+  <script>
+    // surface any boot error in the splash so we never silently hang on "carregando"
+    window.addEventListener('error', e => {
+      var m = document.getElementById('bootmsg');
+      if (m) m.innerHTML = 'erro: ' + (e.message || e.type) +
+        '<br><span style="color:#8a7458">' + (e.filename || '').split('/').pop() + '</span>';
+    });
+  </script>
+  <script src="public/vendor/phaser.min.js"
+          onerror="this.remove();var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js';s.onload=function(){import('./src/main.js')};document.head.appendChild(s);"></script>
+  <script>
+    // only start once Phaser is present (local file or CDN fallback)
+    if (window.Phaser) import('./src/main.js');
+    else document.getElementById('bootmsg').textContent = 'phaser não encontrado — tentando CDN…';
+  </script>
+</body>
+</html>
