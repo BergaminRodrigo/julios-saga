@@ -37,7 +37,7 @@ export class Title extends Phaser.Scene {
     }
 
     this.input.once('pointerdown', () => this.go());
-    this.input.keyboard.once('keydown', () => this.go());
+    this.input.keyboard?.once('keydown', () => this.go());
   }
 
   go() {

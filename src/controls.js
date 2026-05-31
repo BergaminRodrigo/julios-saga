@@ -15,7 +15,7 @@ export class Controls {
 
   _bindKeyboard() {
     const kb = this.scene.input.keyboard;
-    const k = kb.addKeys('LEFT,RIGHT,UP,DOWN,A,D,W,S,SPACE,J,K');
+    const k = kb ? kb.addKeys('LEFT,RIGHT,UP,DOWN,A,D,W,S,SPACE,J,K') : {};
     this._keys = k;
   }
 
@@ -55,11 +55,11 @@ export class Controls {
   // call once per update at top
   poll() {
     const k = this._keys, st = this.state;
-    const kbLeft  = k.LEFT.isDown  || k.A.isDown;
-    const kbRight = k.RIGHT.isDown || k.D.isDown;
-    const kbDown  = k.DOWN.isDown  || k.S.isDown;
-    const kbJump  = k.UP.isDown || k.W.isDown || k.SPACE.isDown;
-    const kbAtk   = k.J.isDown || k.K.isDown;
+    const kbLeft  = k.LEFT?.isDown  || k.A?.isDown;
+    const kbRight = k.RIGHT?.isDown || k.D?.isDown;
+    const kbDown  = k.DOWN?.isDown  || k.S?.isDown;
+    const kbJump  = k.UP?.isDown || k.W?.isDown || k.SPACE?.isDown;
+    const kbAtk   = k.J?.isDown || k.K?.isDown;
 
     this.left  = st.left  || kbLeft;
     this.right = st.right || kbRight;

@@ -13,9 +13,16 @@ const config = {
   backgroundColor: PAL.bg,
   pixelArt: true,
   roundPixels: true,
+  // Keep GPU footprint mobile-safe: render at 1x regardless of device DPR.
+  resolution: 1,
+  render: {
+    powerPreference: 'low-power',
+    failIfMajorPerformanceCaveat: false,
+  },
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
+    max: { width: W, height: H },
   },
   input: { activePointers: 3 },        // multi-touch: move + jump together
   physics: {
@@ -25,5 +32,12 @@ const config = {
   scene: [Boot, Title, Intro, Pub, Game],
 };
 
-// eslint-disable-next-line no-new
-new Phaser.Game(config);
+const game = new Phaser.Game(config);
+
+// Recover WebGL context loss (OS reclaims GPU memory on mobile).
+game.canvas.addEventListener('webglcontextlost', (e) => {
+  e.preventDefault();
+}, false);
+game.canvas.addEventListener('webglcontextrestored', () => {
+  window.location.reload();
+}, false);

@@ -33,7 +33,7 @@ export class Dialogue {
 
     c.add([overlay, port, panel, name, body, prompt]);
 
-    scene.input.keyboard.once('keydown', close);   // any key closes
+    scene.input.keyboard?.once('keydown', close);   // any key closes
     this._timer = scene.time.delayedCall(autoMs, close);  // auto-dismiss
   }
 
