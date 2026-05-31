@@ -22,9 +22,8 @@ const config = {
     failIfMajorPerformanceCaveat: false,
   },
   scale: {
-    mode: Phaser.Scale.FIT,
+    mode: Phaser.Scale.FIT,           // keep 16:9, no distortion
     autoCenter: Phaser.Scale.CENTER_BOTH,
-    max: { width: W, height: H },
   },
   input: { activePointers: 3 },        // multi-touch: move + jump together
   physics: {
@@ -43,3 +42,8 @@ game.canvas.addEventListener('webglcontextlost', (e) => {
 game.canvas.addEventListener('webglcontextrestored', () => {
   window.location.reload();
 }, false);
+
+// Recompute FIT/centering when the device rotates or the viewport resizes.
+function refreshScale() { game.scale.refresh(); }
+window.addEventListener('orientationchange', () => setTimeout(refreshScale, 100));
+window.addEventListener('resize', refreshScale);
