@@ -19,9 +19,6 @@ export class Boot extends Phaser.Scene {
     this.load.image('boss_arena', `${A}/bg/boss-arena.png`);
     this.load.image('portrait', `${A}/ui/julio-portrait.png`);
     this.load.image('burger', `${A}/burguer/burguer.png`);
-    this.load.audio('music_pub', `${A}/music/music-pub.mp3`);
-    this.load.audio('music_forest_boss', `${A}/music/forest-boss.mp3`);
-    this.load.audio('music_final', `${A}/music/final.mp3`);
   }
 
   create() {

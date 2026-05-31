@@ -270,8 +270,17 @@ export class Game extends Phaser.Scene {
     if (this.throwTimer) this.throwTimer.remove();
     if (this._gameMusic) this._gameMusic.stop();
     this.sound.stopAll();
-    this._victoryMusic = this.sound.add('music_final', { loop: false, volume: 0.6 });
-    this._victoryMusic.play();
+    const playFinal = () => {
+      this._victoryMusic = this.sound.add('music_final', { loop: false, volume: 0.6 });
+      this._victoryMusic.play();
+    };
+    if (!this.cache.audio.exists('music_final')) {
+      this.load.audio('music_final', `${A}/music/final.mp3`);
+      this.load.once('complete', playFinal);
+      this.load.start();
+    } else {
+      playFinal();
+    }
 
     this.cameras.main.fadeOut(600, 0, 0, 0);
     this.cameras.main.once('camerafadeoutcomplete', () => {
