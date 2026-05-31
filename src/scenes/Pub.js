@@ -41,9 +41,14 @@ export class Pub extends Phaser.Scene {
     this.ctrl = new Controls(this, { attack:false, crouch:false });
     this.dialogueOpen = true;
 
-    // music (preloaded in Title)
     this.sound.stopAll();
-    this._playPubMusic();
+    if (!this.cache.audio.exists('music_pub')) {
+      this.load.audio('music_pub', `${A}/music/music-pub.mp3`);
+      this.load.once('complete', () => this._playPubMusic());
+      this.load.start();
+    } else {
+      this._playPubMusic();
+    }
 
     // opening dialogue (blocks movement until closed)
     new Dialogue(this, {
